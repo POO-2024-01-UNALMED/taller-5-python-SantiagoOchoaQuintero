@@ -1,5 +1,6 @@
 from zooAnimales.animal import Animal
 
+
 class Mamifero(Animal):
     Mamiferos = []
     caballos = 0
