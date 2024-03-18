@@ -1,10 +1,3 @@
-from gestion.zona import Zona
-from gestion.zoologico import Zoologico 
-from zooAnimales.anfibio import Anfibio
-from zooAnimales.ave import Ave
-from zooAnimales.mamifero import Mamifero
-from zooAnimales.pez import Pez
-from zooAnimales.reptil import Reptil
 from zooAnimales.animal import Animal
 class Ave(Animal):
     aves = []
@@ -20,12 +13,12 @@ class Ave(Animal):
         self.aves.append(self)
 
     @classmethod
-    def crear_halcon(cls, nombre, edad, genero):
+    def crearHalcon(cls, nombre, edad, genero):
         cls.halcones += 1
         return cls(nombre, edad, "montanas", genero, "cafe glorioso")
 
     @classmethod
-    def crear_aguila(cls, nombre, edad, genero):
+    def crearAguila(cls, nombre, edad, genero):
         cls.aguilas += 1
         return cls(nombre, edad, "montanas", genero, "blanco y amarillo")
 
@@ -35,15 +28,18 @@ class Ave(Animal):
     def movimiento(self):
         return "volar"
 
-    def get_color_plumas(self):
+    def getColorPlumas(self):
         return self.color_plumas
 
-    def get_genero(self):
+    def getGenero(self):
         return self.genero
 
-    def get_habitat(self):
+    def getHabitat(self):
         return self.habitat
 
     @classmethod
-    def get_lista(cls):
+    def getLista(cls):
         return cls.aves
+
+    def cantidadAnimales():
+        return len(Ave.aves)

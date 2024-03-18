@@ -1,11 +1,4 @@
 
-from gestion.zona import Zona
-from gestion.zoologico import Zoologico 
-from zooAnimales.anfibio import Anfibio
-from zooAnimales.ave import Ave
-from zooAnimales.mamifero import Mamifero
-from zooAnimales.pez import Pez
-from zooAnimales.reptil import Reptil
 from zooAnimales.animal import Animal
 class Reptil(Animal):
     reptiles = []
@@ -22,30 +15,33 @@ class Reptil(Animal):
         Reptil.reptiles.append(self)
 
     @staticmethod
-    def crear_iguana(nombre, edad, genero):
+    def crearIguana(nombre, edad, genero):
         Reptil.iguanas += 1
         return Reptil(nombre, edad, "humedal", genero, "verde", 3)
 
     @staticmethod
-    def crear_serpiente(nombre, edad, genero):
+    def crearSerpiente(nombre, edad, genero):
         Reptil.serpientes += 1
         return Reptil(nombre, edad, "humedal", genero, "blanco", 1)
 
-    def cantidad_reptiles(self):
+    def cantidadReptiles(self):
         return Reptil.serpientes + Reptil.iguanas
 
     def movimiento(self):
         return "reptar"
 
-    def get_color_escamas(self):
+    def getColorEscamas(self):
         return self.color_escamas
 
-    def get_largo_cola(self):
+    def getLargoCola(self):
         return self.largo_cola
 
-    def get_habitat(self):
+    def getHabitat(self):
         return self.habitat
 
     @staticmethod
-    def get_lista():
+    def getLista():
         return Reptil.reptiles
+    
+    def cantidadAnimales():
+        return len(Reptil.reptiles)

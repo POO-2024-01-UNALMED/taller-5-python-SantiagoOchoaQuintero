@@ -1,13 +1,7 @@
-from gestion.zona import Zona
-from gestion.zoologico import Zoologico 
-from zooAnimales.anfibio import Anfibio
-from zooAnimales.ave import Ave
-from zooAnimales.mamifero import Mamifero
-from zooAnimales.pez import Pez
-from zooAnimales.reptil import Reptil
 from zooAnimales.animal import Animal
+
 class Anfibio(Animal):
-    Anfibio = []
+    Anfibios = []
     ranas = 0
     salamandras = 0
 
@@ -18,33 +12,36 @@ class Anfibio(Animal):
         self.genero = genero
         self.color_piel = color_piel
         self.venenoso = venenoso
-        Anfibio.append(self)
+        self.Anfibios.append(self)
 
     @classmethod
-    def crear_rana(cls, nombre, edad, genero):
+    def crearRana(cls, nombre, edad, genero):
         cls.ranas += 1
         return cls(nombre, edad, "selva", genero, "rojo", True)
 
     @classmethod
-    def crear_salamandra(cls, nombre, edad, genero):
+    def crearSalamandra(cls, nombre, edad, genero):
         cls.salamandras += 1
         return cls(nombre, edad, "selva", genero, "rojo", True)
-
-    def cantidad_anfibios(self):
-        return self.ranas + self.salamandras
+    @staticmethod
+    def cantidadAnfibios(self):
+        return len(Anfibio.Anfibio)
 
     def movimiento(self):
         return "saltar"
 
-    def get_color_piel(self):
+    def getColorPiel(self):
         return self.color_piel
 
-    def is_venenoso(self):
+    def isVenenoso(self):
         return self.venenoso
 
-    def get_habitat(self):
+    def getHabitat(self):
         return self.habitat
 
     @classmethod
-    def get_lista(cls):
+    def getLista(cls):
         return cls.Anfibio
+    
+    def cantidadAnimales():
+        return len(Anfibio.Anfibios)

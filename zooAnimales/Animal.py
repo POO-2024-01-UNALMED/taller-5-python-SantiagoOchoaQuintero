@@ -1,21 +1,17 @@
-from gestion.zona import Zona
-from zooAnimales.anfibio import Anfibio
-from zooAnimales.ave import Ave
-from zooAnimales.mamifero import Mamifero
-from zooAnimales.pez import Pez
-from zooAnimales.reptil import Reptil
-from zooAnimales.animal import Animal
-class Animal(Zona):
+import zooAnimales
+
+class Animal():
     totalAnimales = 0
+    zona = ""
 
-    def __init__(self, nombre, edad, habitat, genero):
-        self.nombre = nombre
-        self.edad = edad
-        self.habitat = habitat
-        self.genero = genero
-        Animal.totalAnimales += 1
+    # def __init__(self, nombre, edad, habitat, genero):
+    #     self.nombre = nombre
+    #     self.edad = edad
+    #     self.habitat = habitat
+    #     self.genero = genero
+    #     Animal.totalAnimales += 1
 
-    def __init__(self, nombre, habitat, genero, zona, edad):
+    def __init__(self, nombre = None, edad = 0,habitat = None, genero = None, zona = None):
         self.nombre = nombre
         self.habitat = habitat
         self.genero = genero
@@ -23,19 +19,17 @@ class Animal(Zona):
         self.edad = edad
         Animal.totalAnimales += 1
 
-    def __init__(self):
-        self("", None, "", None, 0)
 
     def movimiento(self):
         return "desplazarse"
 
     @staticmethod
     def totalPorTipo():
-        return "Mamiferos: " + str(Mamifero.getLista().size()) + "\n" + \
-               "Aves: " + str(Ave.getLista().size()) + "\n" + \
-               "Reptiles " + str(Reptil.getLista().size()) + "\n" + \
-               "Peces: " + str(Pez.getLista().size()) + "\n" + \
-               "Anfibios: " + str(Anfibio.getLista().size())
+        return "Mamiferos : " + str(zooAnimales.mamifero.Mamifero.cantidadAnimales()) + "\n" + \
+               "Aves : "  + str(zooAnimales.ave.Ave.cantidadAnimales()) + "\n" + \
+               "Reptiles : " + str(zooAnimales.reptil.Reptil.cantidadAnimales()) + "\n" + \
+               "Peces : " + str(zooAnimales.pez.Pez.cantidadAnimales()) + "\n" + \
+               "Anfibios : " + str(zooAnimales.anfibio.Anfibio.cantidadAnimales())
 
     def cantidadAnimales(self):
         return 0
@@ -55,5 +49,5 @@ class Animal(Zona):
     def getZona(self):
         return self.zona
 
-    def __str__(self):
+    def toString(self):
         return "Mi nombre es " + self.getNombre() + ", tengo una edad de " + str(self.getEdad()) + ", habito en " + self.getHabitat() + " y mi genero es " + self.getGenero()
