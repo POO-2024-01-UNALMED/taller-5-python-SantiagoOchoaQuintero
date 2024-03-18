@@ -1,42 +1,47 @@
 from zooAnimales.animal import Animal
 
 class Anfibio(Animal):
-    _listado = []
+    Anfibios = []
     ranas = 0
     salamandras = 0
-    
-    def __init__(self, nombre, edad, habitat, genero, colorPiel, venenoso):
-        super().__init__(nombre, edad, habitat, genero)
-        self._colorPiel = colorPiel
-        self._venenoso = venenoso
-        Anfibio._listado.append(self)
 
-    @staticmethod
-    def cantidadAnfibios():
-        return len(Anfibio._listado)
-    
-    @staticmethod
-    def movimiento():
-        return "saltar"
-    
+    def __init__(self, nombre=None, edad=None, habitat=None, genero=None, color_piel=None, venenoso=None):
+        self.nombre = nombre
+        self.edad = edad
+        self.habitat = habitat
+        self.genero = genero
+        self.color_piel = color_piel
+        self.venenoso = venenoso
+        self.Anfibios.append(self)
+
     @classmethod
     def crearRana(cls, nombre, edad, genero):
-        cls(nombre, edad, "selva", genero, "rojo", True)
-        cls.ranas += 1 
+        cls.ranas += 1
+        return cls(nombre, edad, "selva", genero, "rojo", True)
 
     @classmethod
     def crearSalamandra(cls, nombre, edad, genero):
-        cls(nombre, edad, "selva", genero, "negro y amarillo", False)
-        cls.salamandras += 1 
+        cls.salamandras += 1
+        return cls(nombre, edad, "selva", genero, "rojo", True)
+    @staticmethod
+    def cantidadAnfibios(self):
+        return len(Anfibio.Anfibio)
+
+    def movimiento(self):
+        return "saltar"
 
     def getColorPiel(self):
-        return self._colorPiel
-
-    def setColorPiel(self, colorPiel):
-        self._colorPiel = colorPiel
+        return self.color_piel
 
     def isVenenoso(self):
-        return self._venenoso
+        return self.venenoso
+
+    def getHabitat(self):
+        return self.habitat
+
+    @classmethod
+    def getLista(cls):
+        return cls.Anfibio
     
-    def setVenenoso(self, venenoso):
-        self._venenoso = venenoso
+    def cantidadAnimales():
+        return len(Anfibio.Anfibios)

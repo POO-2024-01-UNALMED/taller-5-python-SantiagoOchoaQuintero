@@ -1,42 +1,47 @@
-from zooAnimales.animal import Animal
 
+from zooAnimales.animal import Animal
 class Reptil(Animal):
-    _listado = []
+    reptiles = []
     iguanas = 0
     serpientes = 0
-    
-    def __init__(self, nombre, edad, habitat, genero, colorEscamas, largoCola):
-        super().__init__(nombre, edad, habitat, genero)
-        self._colorEscamas = colorEscamas
-        self._largoCola = largoCola
-        Reptil._listado.append(self)
+
+    def __init__(self, nombre="", edad=0, habitat="", genero="", color_escamas="", largo_cola=0):
+        self.nombre = nombre
+        self.edad = edad
+        self.habitat = habitat
+        self.genero = genero
+        self.color_escamas = color_escamas
+        self.largo_cola = largo_cola
+        Reptil.reptiles.append(self)
 
     @staticmethod
-    def cantidadReptiles():
-        return len(Reptil._listado)
-    
+    def crearIguana(nombre, edad, genero):
+        Reptil.iguanas += 1
+        return Reptil(nombre, edad, "humedal", genero, "verde", 3)
+
     @staticmethod
-    def movimiento():
+    def crearSerpiente(nombre, edad, genero):
+        Reptil.serpientes += 1
+        return Reptil(nombre, edad, "humedal", genero, "blanco", 1)
+
+    def cantidadReptiles(self):
+        return Reptil.serpientes + Reptil.iguanas
+
+    def movimiento(self):
         return "reptar"
-    
-    @classmethod
-    def crearIguana(cls, nombre, edad, genero):
-       cls.iguanas += 1 
-       return cls(nombre, edad, "humedal", genero, "verde", 3)
-
-    @classmethod
-    def crearSerpiente(cls, nombre, edad, genero):
-        cls.serpientes += 1 
-        return cls(nombre, edad, "jungla", genero, "blanco", 1)
 
     def getColorEscamas(self):
-        return self._colorEscamas
-
-    def setColorEscamas(self, colorEscamas):
-        self._colorEscamas = colorEscamas
+        return self.color_escamas
 
     def getLargoCola(self):
-        return self._largoCola
+        return self.largo_cola
+
+    def getHabitat(self):
+        return self.habitat
+
+    @staticmethod
+    def getLista():
+        return Reptil.reptiles
     
-    def setLargoCola(self, largoCola):
-        self._largoCola = largoCola
+    def cantidadAnimales():
+        return len(Reptil.reptiles)
