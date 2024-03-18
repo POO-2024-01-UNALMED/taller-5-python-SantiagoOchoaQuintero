@@ -1,3 +1,10 @@
+from gestion.zona import Zona
+from zooAnimales.anfibio import Anfibio
+from zooAnimales.ave import Ave
+from zooAnimales.mamifero import Mamifero
+from zooAnimales.pez import Pez
+from zooAnimales.reptil import Reptil
+from zooAnimales.animal import Animal
 class Animal(Zona):
     totalAnimales = 0
 
@@ -8,12 +15,12 @@ class Animal(Zona):
         self.genero = genero
         Animal.totalAnimales += 1
 
-    def __init__(self, nombre, habitat, genero, zona, Edad):
+    def __init__(self, nombre, habitat, genero, zona, edad):
         self.nombre = nombre
         self.habitat = habitat
         self.genero = genero
         self.zona = zona
-        self.edad = Edad
+        self.edad = edad
         Animal.totalAnimales += 1
 
     def __init__(self):
